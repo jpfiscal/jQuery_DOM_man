@@ -60,21 +60,38 @@
   <div class="row mb-5">
     <div class="col-sm-4">
       Red
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input id="redInput" class="form-control" type="number" min="0" max="255" value="255">
     </div>
     <div class="col-sm-4">
       Blue
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input id="blueInput" class="form-control" type="number" min="0" max="255" value="255">
     </div>
     <div class="col-sm-4">
       Green
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input id="greenInput" class="form-control" type="number" min="0" max="255" value="255">
     </div>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
-  // Add your code here!
+  $(document).ready(function(){
+    const rndTxtSz = Math.random()*100;
+    console.log('Let’s get ready to party with jQuery!');
+    $('img').addClass('image-center');
+    $('p:last').remove();
+    $('h1').css('font-size', `${rndTxtSz}px`);
+    $('ol').append('<li>Wait...That&#39;s my only cup!</li>');
+    $('aside').empty();
+    $('aside').append('<p>Sorry for the list that was here before, it was stupid</p>');
+  })
+  $('input').on("keyup keydown click", function(){
+      let rgb = `rgb(${$('#redInput').val()},${$('#greenInput').val()},${$('#blueInput').val()})`;
+      console.log(rgb);
+      $('body').css("background-color", rgb);
+  })
+  $('img').on("click", function(){
+    $(this).remove();
+  })
 </script>
 </body>
 
